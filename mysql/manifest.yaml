@@ -21,6 +21,7 @@ spec:
 
 #  Normal service
 ---
+apiVersion: v1
 kind: Service
 metadata:
   name: mysql
@@ -41,7 +42,6 @@ spec:
 
 # StatefulSet
 ---
-
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
