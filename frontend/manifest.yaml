@@ -93,7 +93,7 @@ spec:
               path: nginx.conf
       containers:
       - name: nginx
-        image: dakshina2025/frontend:1.2.0
+        image: dakshina2025/frontend:1.1.0
         resources:
           # soft limit
           requests:
