@@ -97,7 +97,7 @@ spec:
         ports:
         - continerPort: 8080
         volumeMounts:
-          - name: nginx.conf
+          - name: nginx
             mountPath: /etc/nginx/nginx.conf
             subPath: nginx.conf
             readonly: true
