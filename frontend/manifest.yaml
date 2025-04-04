@@ -71,7 +71,7 @@ metadata:
     tier: web
     project: expense
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: frontend
@@ -86,7 +86,7 @@ spec:
     spec:
       volumes:
       - name: nginx
-        configMap: 
+        configMap:
           name: nginx
           items:
             - key: nginx.conf
@@ -94,16 +94,23 @@ spec:
       containers:
       - name: nginx
         image: dakshina2025/frontend:1.2.0
+        resources:
+          # soft limit
+          requests:
+            memory: "68Mi"
+            cpu: "100m"
+          # hard limit
+          limits:
+            memory: "128Mi"
+            cpu: "150m"
         ports:
-        - continerPort: 8080
+        - containerPort: 8080
         volumeMounts:
-          - name: nginx
-            mountPath: /etc/nginx/nginx.conf
-            subPath: nginx.conf
-            readonly: true
-
-        
-       
+        - name: nginx
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
+          readOnly: true
+          
 ---
 kind: Service
 apiVersion: v1
